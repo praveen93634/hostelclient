@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
+import { LayoutComponent } from './layout/layout.component';
 
 export const routes: Routes = [
-    {path:"login",loadComponent:()=>import('../app/auth/login/login.component').then(x=>x.LoginComponent)}
+    {path:'',component:LayoutComponent}
 ];

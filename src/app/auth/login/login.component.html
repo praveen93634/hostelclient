@@ -1,0 +1,41 @@
+<div class="">
+    <div class="d-flex justify-content-center">
+        <div class="card col-lg-4">
+            <div class="card-header">
+                <div>
+                    <h1 class="text-center">Login</h1>
+                </div>
+            </div>
+            <div class="card-body">
+                <form #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && onsubmit()">
+                    <div class="col-lg-12 mb-2">
+                        <label class="mb-1">Email<span class="text-danger">*</span></label>
+                        <input class="form-control" #email="ngModel" pattern=".\w+@\w+\.\w{2,3}$" name="email" id="emailid" [(ngModel)]="login.email"
+                            [ngClass]="{'is-invalid':loginForm.submitted && email.invalid}" required>
+                        <span *ngIf="loginForm.submitted && email.invalid">
+                            <small class="text-danger" *ngIf="email.errors?.['required']">This Feild Is Required</small>
+                            <small class="text-danger" *ngIf="email.errors?.['pattern']">Enter a Valid Email</small>
+                        </span>
+                    </div>
+                    <div class="col-lg-12 mb-2">
+                        <label class="mb-1">Password<span class="text-danger">*</span></label>
+                        <input class="form-control" #password="ngModel" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" name="password" id="password"
+                            [(ngModel)]="login.password"
+                            [ngClass]="{'is-invalid':loginForm.submitted && password.invalid}" required>
+                        <span *ngIf="loginForm.submitted && password.invalid">
+                            <small class="text-danger" *ngIf="password.errors?.['required']">This Feild Is
+                                Required</small>
+                            <small class="text-danger" *ngIf="password.errors?.['pattern']">Enter a Valid Password</small>
+                        </span>
+                    </div>
+                    <div>   
+                        <button class="btn btn-primary w-100 mb-3" type="submit">Login</button>
+                        <div class="">
+                            <p class="text-center text-primary"><a routerLink="/signup">Create new Account?</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
